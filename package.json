@@ -1,0 +1,25 @@
+{
+  "name": "AR-Web-Development-Portal",
+  "version": "1.0.0",
+  "description": "Staff portal for AR Web Development",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrahman22/AR-Web-Development-Portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrahman22/AR-Web-Development-Portal/issues"
+  },
+  "homepage": "https://github.com/mrahman22/AR-Web-Development-Portal#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
