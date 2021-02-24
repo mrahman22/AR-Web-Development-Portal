@@ -1,6 +1,5 @@
 const db = require("../db/db_connection");
 
-
 db.connect();
 
 const fetchStaff = () => {
@@ -59,9 +58,23 @@ deleteStaff = (id) => {
   });
 };
 
+updateStaff = (id, column, value) => {
+  const sql = `UPDATE staff SET ${column} = "${value}" WHERE ID = ${id}`;
+  return new Promise((resolve, reject) => {
+    db.query(sql, (err, results) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(results);
+      }
+    });
+  });
+};
+
 module.exports = {
   fetchStaff,
   fetchStaffById,
   postStaff,
-  deleteStaff
+  deleteStaff,
+  updateStaff,
 };
