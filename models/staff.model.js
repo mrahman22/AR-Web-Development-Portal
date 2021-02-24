@@ -1,5 +1,6 @@
 const db = require("../db/db_connection");
 
+
 db.connect();
 
 const fetchStaff = () => {
@@ -32,8 +33,21 @@ const fetchStaffById = (id) => {
 
 postStaff = ({ first_name, last_name, department, email, contact_number }) => {
   const sql = `INSERT INTO staff(first_name, last_name, department, email, contact_number, registered_data)
-               VALUES ("Stacey", 'Kemp', 'Pathology', 'stacey.kemp@ar-webdevelopment.com', '07900005555', now())`;
+               VALUES ("${first_name}", "${last_name}", "${department}", "${email}", "${contact_number}", now())`;
 
+  return new Promise((resolve, reject) => {
+    db.query(sql, (err, results) => {
+      if (err) {
+        return reject(err);
+      } else {
+        return resolve(results);
+      }
+    });
+  });
+};
+
+deleteStaff = (id) => {
+  const sql = `DELETE FROM staff WHERE ID = ${id}`;
   return new Promise((resolve, reject) => {
     db.query(sql, (err, results) => {
       if (err) {
@@ -49,4 +63,5 @@ module.exports = {
   fetchStaff,
   fetchStaffById,
   postStaff,
+  deleteStaff
 };

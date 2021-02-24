@@ -2,6 +2,7 @@ const {
   fetchStaff,
   fetchStaffById,
   postStaff,
+  deleteStaff
 } = require("../models/staff.model");
 
 const getAllStaff = (req, res, next) => {
@@ -26,16 +27,20 @@ const getStaffById = (req, res, next) => {
 };
 
 const postNewStaff = (req, res, next) => {
-  const newStaff = {
-    first_name: "Elon",
-    last_name: "Musk",
-    department: "Developer",
-    email: "elon.musk@ar-webdevelopment.com",
-    contact_number: "07999999999",
-    registered_data: "",
-  };
+  const newStaff = req.body;
 
   postStaff(newStaff)
+    .then((staff) => {
+      res.send(staff);
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
+const deleteStaffById = (req, res, next) => {
+  const id = req.params.staff_id;
+  deleteStaff(id)
     .then((staff) => {
       res.send(staff);
     })
@@ -48,4 +53,5 @@ module.exports = {
   getAllStaff,
   getStaffById,
   postNewStaff,
+  deleteStaffById,
 };
