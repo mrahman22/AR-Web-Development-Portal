@@ -88,3 +88,13 @@ describe("/api", () => {
       });
   });
 });
+
+describe("/api", () => {
+  it("sortBy - sort table by column selected and value defined", () => {
+    return request(app)
+      .get("/api?department=sales")
+      .then((response) => {
+        expect(response.body[0].department).to.equal("Sales");
+      });
+  });
+});

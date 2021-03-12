@@ -12,7 +12,6 @@ const fetchStaff = (query) => {
     sql = "SELECT * FROM staff";
   }
 
-  console.log(sql)
 
   return new Promise((resolve, reject) => {
     db.query(sql, (err, results) => {
