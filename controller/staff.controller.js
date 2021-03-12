@@ -7,7 +7,9 @@ const {
 } = require("../models/staff.model");
 
 const getAllStaff = (req, res, next) => {
-  fetchStaff()
+
+
+  fetchStaff(req.query)
     .then((staff) => {
       res.send(staff);
     })
